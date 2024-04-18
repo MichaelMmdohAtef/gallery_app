@@ -1,5 +1,6 @@
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dio/dio.dart';
+import 'package:gallery_app/core/networking/api_constants.dart';
 import 'package:gallery_app/core/networking/api_error_handler.dart';
 import 'package:gallery_app/core/networking/api_result.dart';
 import 'package:gallery_app/core/networking/api_service.dart';
@@ -19,26 +20,28 @@ class HomeRepo {
 
   Future<ApiResult<UploadImageResponse>> uploadImage(FormData formData) async {
     try {
-      _dio.options.headers = {
+      _dio
+      .options.headers = {
         "Authorization": "Bearer ${LoginCubit.loginUserData!.token ?? ""}",
         "Content-Type": "application/json",
         "Accept": "application/json"
       };
       final response = await _apiService.uploadImage(formData);
       return ApiResult.success(response);
-    } catch (errro) {
+    } on DioException catch (errro) {
       return ApiResult.failure(ErrorHandler.handle(errro));
     }
   }
 
-  Future<ApiResult<GetGalleryModel>?> getImage() async {
+  Future<ApiResult<GetGalleryModel>> getImage() async {
+
     final connectivityResult = await Connectivity().checkConnectivity();
     if (!connectivityResult.contains(ConnectivityResult.none)) {
       try {
         final response = await _remoteData.getImageFromRemoteData();
         await _localData.cacheImages(imagesToCach: response);
         return ApiResult.success(response);
-      } catch (errro) {
+      } on DioException catch (errro) {
         return ApiResult.failure(ErrorHandler.handle(errro));
       }
     } else {
@@ -47,14 +50,13 @@ class HomeRepo {
         if (response.toString().isNotEmpty) {
           return ApiResult.success(response!);
         } else {
-          
+                  return ApiResult.failure(
+              ErrorHandler.handle("cache exception is empty"));
         }
       } catch (e) {
-        print(e.toString());
         return ApiResult.failure(
             ErrorHandler.handle("cache exception is empty"));
       }
     }
-    return null;
   }
 }

@@ -36,6 +36,7 @@ class DialogOfGalleryAndCamera extends StatelessWidget {
             borderWidth: 1,
             amount: 10,
             brightness: 0.5,
+            colorOfButton: ColorsManager.mainWhite,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -43,6 +44,7 @@ class DialogOfGalleryAndCamera extends StatelessWidget {
                   height: 65.h,
                   width: 184.w,
                   borderRadius: 20,
+                  colorOfButton: ColorsManager.mainOffWhite,
                   child: AppTextButton(
                       buttonText: "Gellary",
                       textStyle: TextStyles.font27BlackBold,
@@ -53,7 +55,6 @@ class DialogOfGalleryAndCamera extends StatelessWidget {
                       horizontalPadding: 0,
                       verticalPadding: 0,
                       buttonHeight: 65.h,
-                      backgroundColor: ColorsManager.mainOffWhite,
                       borderRadius: 20,
                       onPressed: () async {
                         File? filePath = await pickImageFromGallery();
@@ -70,6 +71,7 @@ class DialogOfGalleryAndCamera extends StatelessWidget {
                   height: 65.h,
                   width: 184.w,
                   borderRadius: 20,
+                  colorOfButton: ColorsManager.secondWhite,
                   child: AppTextButton(
                       buttonText: "Camera",
                       textStyle: TextStyles.font27BlackBold,
@@ -80,7 +82,6 @@ class DialogOfGalleryAndCamera extends StatelessWidget {
                       horizontalPadding: 0,
                       verticalPadding: 0,
                       buttonHeight: 65.h,
-                      backgroundColor: ColorsManager.secondWhite,
                       borderRadius: 20,
                       onPressed: () async {
                         File? filePath = await pickImageFromCamera();

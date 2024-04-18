@@ -15,7 +15,7 @@ class AppRouter {
       case Routes.homeScreen:
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
-            create: (context) => HomeCubit(getIt<HomeRepo>())..emitGetImages(),
+            create: (context) => HomeCubit(getIt<HomeRepo>()),
             child: const HomeScreen(),
           ),
         );

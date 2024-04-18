@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gallery_app/features/home/data/models/get_gallery_model.dart';
 import 'package:gallery_app/features/home/data/repos/home_repo.dart';
 import 'package:gallery_app/features/home/logic/cubit/home_state.dart';
+import 'package:toast/toast.dart';
 
 class HomeCubit extends Cubit<HomeState> {
   final HomeRepo _homeRepo;
@@ -16,7 +17,6 @@ class HomeCubit extends Cubit<HomeState> {
     emit(EmitLoadingUploadImageStates());
     final response = await _homeRepo.uploadImage(formData);
     response.when(success: (response) async {
-      await emitGetImages();
       emit(EmitSuccessUploadImageStates(successMessage: response.message!));
     }, failure: (error) {
       emit(EmitErrorUploadImageStates(
@@ -27,8 +27,10 @@ class HomeCubit extends Cubit<HomeState> {
   Future<void> emitGetImages() async {
     emit(EmitLoadingGetImageStates());
     final response = await _homeRepo.getImage();
-    response!.when(success: (getImageResponse) {
+    response.when(success: (getImageResponse) {
       galleryModel = getImageResponse;
+      Toast.show(getImageResponse.message.toString(),
+          duration: Toast.lengthShort, gravity: Toast.bottom);
       emit(EmitSuccessGetImageStates());
     }, failure: (error) {
       emit(EmitErrorGetImageStates(

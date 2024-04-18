@@ -2,7 +2,7 @@ name: gallery_app
 description: "A new Flutter project."
 # The following line prevents the package from being accidentally published to
 # pub.dev using `flutter pub publish`. This is preferred for private packages.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -19,7 +19,7 @@ publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.2.1 <4.0.0'
+  sdk: ">=3.2.1 <4.0.0"
 
 # Dependencies specify other packages that your package needs in order to work.
 # To automatically upgrade your package dependencies to the latest versions
@@ -30,7 +30,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
@@ -53,7 +52,7 @@ dependencies:
   retrofit_generator: ^8.0.4
   pretty_dio_logger: ^1.3.1
   # for adapting screen and font size.
-  flutter_screenutil: ^5.9.0  
+  flutter_screenutil: ^5.9.0
   # Flutter plugin for selecting images from the Android and iOS image library, and taking new pictures with the camera
   image_picker: ^1.0.7
   # Show UI elements according for conditional type and supports null safety
@@ -65,6 +64,7 @@ dependencies:
   connectivity_plus: ^6.0.2
   hive: ^2.2.3
   path_provider: ^2.1.2
+  toast: ^0.3.0
 
 dev_dependencies:
   flutter_test:
@@ -82,7 +82,6 @@ dev_dependencies:
 
 # The following section is specific to Flutter packages.
 flutter:
-
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
@@ -117,6 +116,5 @@ flutter:
         - asset: fonts/baloo_thambi/BalooThambi2-SemiBold.ttf
           weight: 600
 
-  
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

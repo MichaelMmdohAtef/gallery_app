@@ -129,6 +129,7 @@ class ErrorHandler implements Exception {
       apiErrorModel = _handleError(error);
     } else {
       // default error
+      print("q");
       apiErrorModel =
           ApiErrorModel(code: ResponseCode.DEFAULT, message: error.toString());
       // apiErrorModel = DataSource.DEFAULT.getFailure();
@@ -163,9 +164,9 @@ ApiErrorModel _handleError(DioException error) {
     case DioExceptionType.cancel:
       return DataSource.CANCEL.getFailure();
     case DioExceptionType.connectionError:
-      return DataSource.DEFAULT.getFailure();
+      return DataSource.NO_INTERNET_CONNECTION.getFailure();
     case DioExceptionType.badCertificate:
-      return DataSource.DEFAULT.getFailure();
+      return DataSource.BAD_REQUEST.getFailure();
     case DioExceptionType.badResponse:
       return DataSource.DEFAULT.getFailure();
   }

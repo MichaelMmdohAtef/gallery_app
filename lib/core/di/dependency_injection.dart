@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:gallery_app/core/networking/api_constants.dart';
 import 'package:gallery_app/core/networking/api_service.dart';
 import 'package:gallery_app/core/networking/dio_factory.dart';
 import 'package:gallery_app/features/home/data/repos/home_repo.dart';
@@ -9,25 +10,24 @@ import 'package:get_it/get_it.dart';
 import '../../features/login/data/repos/login_repo.dart';
 import '../../features/login/logic/cubit/login_cubit.dart';
 
-
 final getIt = GetIt.instance;
 
 Future<void> setupGetIt() async {
   // Dio & ApiService
   Dio dio = DioFactory.getDio();
-  GetImagesLocalDataSource getImagesLocalDataSource=GetImagesLocalDataSource();
-  getIt.registerLazySingleton<ApiService>(() => ApiService(dio));
+  GetImagesLocalDataSource getImagesLocalDataSource =
+      GetImagesLocalDataSource();
+  getIt.registerFactory<ApiService>(
+      () => ApiService(dio, baseUrl: ApiConstants.apiBaseUrl));
 
   // login
-  getIt.registerLazySingleton<LoginRepo>(() => LoginRepo(getIt()));
+  getIt.registerLazySingleton<LoginRepo>(() => LoginRepo(getIt<ApiService>()));
   getIt.registerFactory<LoginCubit>(() => LoginCubit(getIt()));
 
-
   // home
-  getIt.registerLazySingleton<GetImagesRemoteDataSource>(() => GetImagesRemoteDataSource(getIt<ApiService>(), dio));
-  getIt.registerLazySingleton<HomeRepo>(() => HomeRepo(getIt<ApiService>(),dio,getImagesLocalDataSource,getIt<GetImagesRemoteDataSource>()));
+  getIt.registerLazySingleton<GetImagesRemoteDataSource>(
+      () => GetImagesRemoteDataSource(getIt<ApiService>(), dio));
+  getIt.registerLazySingleton<HomeRepo>(() => HomeRepo(getIt<ApiService>(), dio,
+      getImagesLocalDataSource, getIt<GetImagesRemoteDataSource>()));
   getIt.registerFactory<HomeCubit>(() => HomeCubit(getIt()));
-
-
-  
 }

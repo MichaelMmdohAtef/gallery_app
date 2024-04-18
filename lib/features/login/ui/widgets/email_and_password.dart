@@ -31,12 +31,13 @@ class _EmailAndPasswordState extends State<EmailAndPassword> {
       height: 388.h,
       width: 345.w,
       borderRadius: 32,
+      colorOfButton: ColorsManager.mainWhite,
       child: Form(
         key: context.read<LoginCubit>().formKey,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            verticalSpace(48),
+            verticalSpace(34),
             SizedBox(
               height: 40.h,
               child: Text(
@@ -44,7 +45,7 @@ class _EmailAndPasswordState extends State<EmailAndPassword> {
                 style: TextStyles.font30BlackBold,
               ),
             ),
-            verticalSpace(38),
+            verticalSpace(32),
             AppTextFormField(
               hintText: 'User Name',
               validator: (value) {
@@ -87,7 +88,7 @@ class _EmailAndPasswordState extends State<EmailAndPassword> {
 
   @override
   void dispose() {
-    passwordController.dispose();
+    // passwordController.dispose();
     super.dispose();
   }
 }

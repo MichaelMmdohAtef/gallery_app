@@ -1,5 +1,4 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
@@ -12,7 +11,9 @@ class FrostedGlassBox extends StatelessWidget {
       required this.child,
       this.brightness,
       this.amount,
-      this.borderWidth});
+      this.borderWidth,
+      required this.colorOfButton
+      });
   double borderRadius;
   double height;
   double width;
@@ -20,6 +21,7 @@ class FrostedGlassBox extends StatelessWidget {
   double? brightness;
   double? amount;
   double? borderWidth;
+  Color colorOfButton;
 
   @override
   Widget build(BuildContext context) {
@@ -47,8 +49,8 @@ class FrostedGlassBox extends StatelessWidget {
                     begin: Alignment.topLeft,
                     end: Alignment.bottomRight,
                     colors: [
-                      Colors.white.withOpacity(brightness ?? 0.5),
-                      Colors.white.withOpacity(brightness ?? 0.5),
+                      colorOfButton.withOpacity(brightness ?? 0.5),
+                      colorOfButton.withOpacity(brightness ?? 0.5),
                     ],
                   )),
             ),

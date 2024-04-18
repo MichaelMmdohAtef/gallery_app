@@ -9,7 +9,7 @@ import 'package:hive/hive.dart';
 import 'package:path_provider/path_provider.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();  
+  WidgetsFlutterBinding.ensureInitialized();
   final appDocumentDirectory = await getApplicationDocumentsDirectory();
   Hive.init(appDocumentDirectory.path);
   CachHelper.box = await Hive.openBox('image_gallery');

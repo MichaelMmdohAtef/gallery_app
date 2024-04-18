@@ -33,13 +33,12 @@ class AppTextFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 46.h,
       width: 282.w,
       child: TextFormField(
         controller: controller,
         decoration: InputDecoration(
           contentPadding: contentPadding ??
-              EdgeInsets.symmetric(horizontal: 20.w, vertical: 11.h),
+              EdgeInsets.symmetric(horizontal: 20.w, vertical: 8.h),
           focusedBorder: focusedBorder ??
               OutlineInputBorder(
                 borderSide: const BorderSide(
@@ -77,7 +76,6 @@ class AppTextFormField extends StatelessWidget {
           filled: true,
         ),
         obscureText: isObscureText ?? false,
-        // style: TextStyles.font14DarkBlueMedium,
         validator: (value) {
           return validator(value);
         },

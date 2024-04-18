@@ -3,6 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gallery_app/core/helpers/spacing.dart';
 import 'package:gallery_app/core/theming/styles.dart';
 import 'package:gallery_app/features/login/ui/widgets/email_and_password.dart';
+import 'package:toast/toast.dart';
 import 'widgets/login_bloc_listener.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -10,12 +11,11 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ToastContext().init(context);
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
-          physics: const NeverScrollableScrollPhysics(),
           child: Container(
-            width: 1.sw,
             height: 1.sh,
             decoration: const BoxDecoration(
                 image: DecorationImage(
@@ -50,6 +50,4 @@ class LoginScreen extends StatelessWidget {
       ),
     );
   }
-
-
 }

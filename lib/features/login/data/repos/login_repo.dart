@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:gallery_app/core/networking/api_error_handler.dart';
 import 'package:gallery_app/core/networking/api_result.dart';
 import 'package:gallery_app/core/networking/api_service.dart';
@@ -12,9 +13,9 @@ class LoginRepo {
   Future<ApiResult<LoginResponse>> login(
       LoginRequestBody loginRequestBody) async {
     try {
-      final response = await _apiService.login(loginRequestBody);
+      final response = await _apiService.login(loginRequestBody.toJson());
       return ApiResult.success(response);
-    } catch (errro) {
+    } on DioException catch (errro) {
       return ApiResult.failure(ErrorHandler.handle(errro));
     }
   }

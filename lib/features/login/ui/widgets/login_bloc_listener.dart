@@ -28,6 +28,7 @@ class LoginBlocListener extends StatelessWidget {
           context.pushNamedAndRemoveUntil(context, Routes.homeScreen,
               predicate: (route) => false);
         } else if (state is EmitErrorLoginStates) {
+          context.pop(context);
           setupErrorState(context, state.errorMessage);
         }
       },
@@ -36,7 +37,6 @@ class LoginBlocListener extends StatelessWidget {
   }
 
   void setupErrorState(BuildContext context, String error) {
-    context.pop(context);
     showDialog(
       context: context,
       builder: (context) => AlertDialog(

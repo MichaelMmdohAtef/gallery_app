@@ -24,6 +24,9 @@ class LoginCubit extends Cubit<LoginState> {
     );
     response.when(success: (loginResponse) {
       loginUserData = loginResponse;
+      // emit(EmitErrorLoginStates(
+      //     errorMessage:
+      //         "${loginUserData!.token} ${emailController.text} ${passwordController.text} " ));
       emit(EmitSuccessLoginStates());
     }, failure: (error) {
       emit(EmitErrorLoginStates(

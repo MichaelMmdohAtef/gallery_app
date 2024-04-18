@@ -13,9 +13,10 @@ class DioFactory {
     if (dio == null) {
       dio = Dio();
       dio!
+        // ..options.baseUrl = ApiConstants.apiBaseUrl
         ..options.connectTimeout = timeOut
         ..options.receiveTimeout = timeOut
-        ..options.receiveDataWhenStatusError=true;
+        ..options.receiveDataWhenStatusError = true;
       addDioInterceptor();
       return dio!;
     } else {

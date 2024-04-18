@@ -5,12 +5,14 @@ import 'package:gallery_app/features/home/ui/widgets/grid_view_of-image.dart';
 import 'package:gallery_app/features/home/ui/widgets/home_bloc_listener.dart';
 import 'package:gallery_app/features/home/ui/widgets/logout_and_upload_image_buttons.dart';
 import 'package:gallery_app/features/home/ui/widgets/nameAndImageOfUser.dart';
+import 'package:toast/toast.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    ToastContext().init(context);
     return Scaffold(
       body: SafeArea(
         child: Container(

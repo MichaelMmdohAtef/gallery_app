@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:gallery_app/core/helpers/extensions.dart';
 import 'package:gallery_app/core/routing/routes.dart';
+import 'package:gallery_app/core/theming/colors.dart';
 import 'package:gallery_app/core/theming/styles.dart';
 import 'package:gallery_app/core/widgets/app_text_button.dart';
 import 'package:gallery_app/core/widgets/frosted_glass_box.dart';
@@ -21,6 +22,7 @@ class LogOutAndUploadImageButtons extends StatelessWidget {
             borderRadius: 16,
             height: 40.h,
             width: 145.w,
+            colorOfButton: ColorsManager.mainWhite,
             child: AppTextButton(
                 horizontalPadding: 0,
                 verticalPadding: 0,
@@ -30,7 +32,7 @@ class LogOutAndUploadImageButtons extends StatelessWidget {
                     "assets/background images/redBackground.png",
                 textStyle: TextStyles.font20BlackBaloosemiBold,
                 onPressed: () {
-                  context.pushNamedAndRemoveUntil(context,Routes.loginScreen,
+                  context.pushNamedAndRemoveUntil(context, Routes.loginScreen,
                       predicate: (route) => false);
                 }),
           ),
@@ -38,6 +40,7 @@ class LogOutAndUploadImageButtons extends StatelessWidget {
             borderRadius: 16,
             height: 40.h,
             width: 145.w,
+            colorOfButton: ColorsManager.mainWhite,
             child: AppTextButton(
                 horizontalPadding: 0,
                 verticalPadding: 0,
@@ -56,6 +59,6 @@ class LogOutAndUploadImageButtons extends StatelessWidget {
   uploadIMageFromGallery(BuildContext context) {
     showDialog(
         context: context,
-        builder: (context) =>const DialogOfGalleryAndCamera());
+        builder: (context) => const DialogOfGalleryAndCamera());
   }
 }
